@@ -18,6 +18,9 @@ Next, create a couple of new functions in `usePhotoGallery`:
 
 ```tsx
 export function usePhotoGallery() {
+
+//add this savePicture declaration after SetPhotos() call
+
   const savePicture = async (photo: Photo, fileName: string): Promise<UserPhoto> => {
     const base64Data = await base64FromPath(photo.webPath!);
     const savedFile = await Filesystem.writeFile({
@@ -34,6 +37,8 @@ export function usePhotoGallery() {
     };
   };
 }
+
+//add this export async function... after the export interface UserPhoto {}
 
 export async function base64FromPath(path: string): Promise<string> {
   const response = await fetch(path);
